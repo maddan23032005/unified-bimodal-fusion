@@ -1,0 +1,35 @@
+def bimodal_fusion(sign_res, veh_res):
+    detections = []
+
+    if sign_res[0].boxes is not None:
+        for b in sign_res[0].boxes:
+            detections.append({
+                "box": b.xyxy.cpu().numpy()[0],
+                "conf": float(b.conf),
+                "label": "Traffic Sign"
+            })
+
+    if veh_res[0].boxes is not None:
+        for b in veh_res[0].boxes:
+            detections.append({
+                "box": b.xyxy.cpu().numpy()[0],
+                "conf": float(b.conf),
+                "label": "Vehicle"
+            })
+
+    return detections
+ 
+
+fused = bimodal_fusion(sign_res, veh_res)
+print("Total fused detections:", len(fused)) 
+
+
+Result of Distillation 
+
+0: 448x640 1 Road work, 478.4ms
+Speed: 20.5ms preprocess, 478.4ms inference, 46.2ms postprocess per image at shape (1, 3, 448, 640)
+
+0: 448x640 5 cars, 1 pedestrian, 4 trafficLight-Greens, 1 truck, 242.1ms
+Speed: 4.3ms preprocess, 242.1ms inference, 5.3ms postprocess per image at shape (1, 3, 448, 640)
+Traffic signs: 1
+Vehicles: 11 

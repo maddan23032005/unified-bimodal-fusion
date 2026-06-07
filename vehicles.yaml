@@ -1,0 +1,6 @@
+train: C:\Users\madda\OneDrive\Desktop\Front Collision\data\train
+val: C:\Users\madda\OneDrive\Desktop\Front Collision\data\valid
+test: C:\Users\madda\OneDrive\Desktop\Front Collision\data\test
+
+nc: 11
+names: ['biker', 'car', 'pedestrian', 'trafficLight', 'trafficLight-Green', 'trafficLight-GreenLeft', 'trafficLight-Red', 'trafficLight-RedLeft', 'trafficLight-Yellow', 'trafficLight-YellowLeft', 'truck']
